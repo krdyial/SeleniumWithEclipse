@@ -1,5 +1,7 @@
 package com.selenium;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -52,6 +54,48 @@ public class Locators01 {
 		System.out.println(result);
 		
 		//Verify the Addresses and Sign Out texts are displayed
+		
+	    String display1= driver.findElement(By.linkText("Addresses")).getText();
+	    System.out.println(display1);
+	    
+	    String expectedText1="Addresses";
+	    
+	    String resultAddresses= display1.equals(expectedText1) ? "Passed" :"Failed";
+	    System.out.println(resultAddresses);
+	    
+	    String expectedSignout="Sign Out";
+	    
+	    WebElement signoutButton= driver.findElement(By.linkText("Sign out"));
+	    String actualSignout = driver.findElement(By.linkText("Sign out")).getText();
+	    System.out.println(actualSignout);
+	    
+	    if(actualSignout.equals(expectedSignout)) {
+	    	System.out.println("Passed");
+	    }else {
+	    	System.out.println("Failed"+ actualSignout);
+	    }
+	    
+	    //Find the number of total link on the page
+	    
+	    List<WebElement> numberOfLink = driver.findElements(By.tagName("a"));
+	    System.out.println("Number of the links= "+numberOfLink.size());
+	    for (WebElement a : numberOfLink) {
+			System.out.println(a.getText());
+		}
+	    
+	    //Sign out from the page
+	    signoutButton.click();
+	    
+	    driver.close();
+	   
+	    
+	   
+	    
+	    
+	    
+	    
+		
+		
 		
 		
 		
